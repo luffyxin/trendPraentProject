@@ -9,13 +9,27 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 
+/**
+ * @author you
+ */
 @RestController
 public class IndexController {
     @Resource
     IndexService indexService;
 
     @GetMapping("/getCodes")
-    public List<Index> get() throws Exception {
-        return indexService.fetch_indexes_from_third_part();
+    public List<Index> get()   {
+        return indexService.get();
+    }
+
+    @GetMapping("/freshCodes")
+    public List<Index> fresh()  {
+        return indexService.fresh();
+    }
+
+    @GetMapping("/removeCodes")
+    public String remove()   {
+        indexService.remove();
+        return "remove codes successfully";
     }
 }
