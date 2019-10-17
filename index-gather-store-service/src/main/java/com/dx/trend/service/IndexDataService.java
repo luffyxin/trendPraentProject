@@ -35,7 +35,6 @@ public class IndexDataService {
 
     private Map<String, List<IndexData>> indexDatas = new HashMap<>();
 
-
     public List<IndexData> fetch_indexes_from_third_part(String code){
         List<Map> temp= restTemplate.getForObject("http://127.0.0.1:8090/indexes/"+code+".json",List.class);
         return map2IndexData(temp);
